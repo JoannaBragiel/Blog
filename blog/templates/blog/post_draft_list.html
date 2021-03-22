@@ -1,0 +1,11 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+
+    {% for post in posts %}     <!-- dla draftów zachowujemy tylko informację, kiedy został storzony, z całej listy -->
+        <div class="post">
+            <p class="date">created: {{ post.created_date|date }} </p>
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>      <!-- post.title will take user to 'post_details' page -->
+            <p>{{ post.text }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
